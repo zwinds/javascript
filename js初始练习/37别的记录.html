@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 1.imply global 暗示全局变量：即任何变量，如果变量未经声明就赋值，此变量就为 全局对象(就是 window)所有。
+    全局对象是window
+    例 window.a = 10; 例 a = 10; ===> windows.a = 10; eg: var a = b = 123;
+    2.一切声明的全局变量，全是window 的属性。
+    例 var a = 123; ===> window.a = 123;
+    window 就是全局的域
+    如果在全局变量在 var a = 123；那么就会返回到 window
+    例 var a = 123 console.log(a) ===> window.a 例 var a = b = 234;是把 234 的值赋给b，
+    在把b 的值赋给 a 例 function test(){
+    var a = b = 123;
+    } test()
+    
+    写 test()代表执行 test，赋值是自右向左的，上面先把 123 赋给 b的时候， b 未经声明， 然后再声明 a，再 b的值赋给 a，导致b 未经声明，所以 b归 window 所有 访问 window.a是
+    undefined，访问 window.b 是123
+    
+    1.创建 AO 对象 Activation Object(执行期上下文，作用是理解的作用域，函数产生 的执行空间库)
+    
+    2.找形参和变量声明，将变量和形参名作为AO属性名，值为 undefined 相当于 AO{ a : undefined, b : undefined }
+    
+    3.将实参值和形参统一（把实参值传到形参里）
+    
+    4.在函数体里面找函数声明，值赋予函数体 （先看自己的AO，再看全局的 GO） -->
+
+</body>
+</html>

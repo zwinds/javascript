@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>蜂窝状正六边形</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .box{
+            height: 100px;
+            width:173.2px;/*100*1.732px*/
+            background-color: red;
+            margin: 200px;
+            position: relative;
+        }
+        .box:before{        /*伪元素*/
+            content: '';
+            display: block;
+            height: 0;
+            width: 0;
+            border-left: 86.6px solid transparent;
+            border-right: 86.6px solid transparent;
+            border-top: 50px solid red;
+            position: absolute;
+            left: 0;
+           bottom:-50px;
+        }
+        .box:after{
+            content: '';
+            display: block;
+            height: 0;
+            width: 0;
+            border-left: 86.6px solid transparent;
+            border-right: 86.6px solid transparent;
+            border-bottom: 50px solid red;
+            position: absolute;
+            top: -50px;
+            left: 0;
+
+        }
+        .t{
+            /* height: 50px;
+            width: 50px;
+            border-top: 100px solid black;
+            border-right: 100px solid green;
+            border-bottom: 100px solid blue;
+            border-left: 100px solid yellow;
+            margin: 100px; */
+            height: 0px;
+            width: 0px;
+            border-top: 100px solid black;
+            border-right: 100px solid green;
+            border-bottom: 100px solid blue;
+            border-left: 100px solid yellow;
+            margin: 100px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="t"></div>
+</body>
+</html>

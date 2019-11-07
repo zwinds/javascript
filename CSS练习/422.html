@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圆</title>
+    <style>
+        div{
+            position: relative;
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            background: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var an = document.getElementsByTagName('div')[0];
+        console.log(an)
+        setInterval(function(){
+            zf(an)
+        },100)
+        function zf(lxy){
+            var v = 10;
+            lxy.style.left = lxy.offsetLeft + v + 'px';
+        }
+    </script>
+</body>
+</html>

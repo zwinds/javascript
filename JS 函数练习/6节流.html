@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>节流抢票脚本</title>
+</head>
+<body>
+    <div id="show">0</div>
+    <button id="btn">click</button>
+    <script>
+        var oDiv = document.getElementById('show');
+        var oBtn = document.getElementById('btn');
+        // --------------下面是节流的函数----------------
+        function throttle (handler,wait){
+            var lastTime = 0;
+            return function(e){
+                //arguments[event]
+                var nowTime = new Date().getTime();//这里获取从1970年到现在的毫秒值
+                if(nowTime - lastTime > wait){
+                    // handler();
+                    handler.apply(this,arguments);
+                    lastTime = nowTime; 
+                }
+            }
+// ------------------------------上面是节流的操作----------------
+        }
+        function buy(e){
+            console.log(this,e);
+             oDiv.innerText = parseInt(oDiv.innerText) + 1;
+        }
+        oBtn.onclick = throttle(buy,1000);
+        // oBtn.onclick = function (){
+        //     oDiv.innerText = parseInt(oDiv.innerText) +1;
+        // }
+    </script>
+</body>
+</html>

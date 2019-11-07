@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS轮播图</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+        }
+
+        .wrapper {
+            position: relative;
+            margin: 100px auto 0px;
+            width: 400px;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .wrapper .sliderPage {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            height: 250px;
+            width: 2000px;
+        }
+
+        .wrapper .sliderPage li {
+            width: 400px;
+            height: 250px;
+            float: left;
+        }
+
+        .wrapper .sliderPage li img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .wrapper .btn {
+            position: absolute;
+            width: 40px;
+            top: 50%;
+            margin-top: -20px;
+            height: 40px;
+            color: #fff;
+            background-color: #000;
+            text-align: center;
+            line-height: 40px;
+            opacity: 0.0;
+            /*  改变透明度 */
+            cursor: pointer;
+        }
+
+        .wrapper:hover .btn {
+            opacity: 0.6;
+        }
+
+        .wrapper .leftBtn {
+            left: 0px;
+        }
+
+        .wrapper .rightBtn {
+            right: 0px;
+        }
+
+        .wrapper .sliderIndex span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .wrapper .sliderIndex {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .wrapper .sliderIndex .active {
+            background-color: #F40;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <ul class="sliderPage">
+            <li>
+                <img src="./img/1.jpg" />
+            </li>
+            <li>
+                <img src="./img/2.jpg" />
+            </li>
+            <li>
+                <img src="./img/3.jpg" />
+            </li>
+            <li>
+                <img src="./img/4.jpg" />
+            </li>
+            <li>
+                <img src="./img/1.jpg" />
+            </li>
+        </ul>
+        <div class="btn leftBtn">&lt;</div><!-- &lt,&gt分别<> -->
+        <div class="btn rightBtn">&gt;</div>
+        <div class="sliderIndex">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <script src="./move.js"></script>
+    <script>
+        //direction 默认轮播方向 从左到右 //不传递就是undefined
+        //从右向左就是按钮点击
+        var timer = null;
+        var sliderPage = document.getElementsByClassName('sliderPage')[0];
+        var moveWidth = sliderPage.children[0].offsetWidth;
+        var num = sliderPage.children.length - 1;
+        var leftBtn = document.getElementsByClassName('leftBtn')[0];
+        var rightBtn = document.getElementsByClassName('rightBtn')[0];
+        var lock = true;
+        var index = 0;
+        var oSpanArray = document.getElementsByClassName('sliderIndex')[0].getElementsByTagName('span');
+
+        leftBtn.onclick = function () {
+            autoMove('right->left');
+        }
+        rightBtn.onclick = function () {
+            autoMove('left->right');
+        }
+        for (var i = 0; i < oSpanArray.length; i++) {
+            (function (myIndex) {
+                oSpanArray[i].onclick = function () {
+                    // alert(myIndex);
+                    lock = false;
+                    clearTimeout(timer);
+                    index = myIndex;
+                    startMove(sliderPage, { left: - index * moveWidth }, function () {
+                        lock = true;
+                        timer = setTimeout(autoMove, 1800);
+                        changeIndex(index);
+
+                    })
+                }
+            })(i)
+        }
+        function autoMove(direction) {
+            if (lock) {
+                lock = false;
+                if (!direction || direction == 'left->right') {
+                    index++;
+                    startMove(sliderPage, { left: sliderPage.offsetLeft - moveWidth }, function () {
+                        if (sliderPage.offsetLeft == - num * moveWidth) {
+                            index = 0;
+                            sliderPage.style.left = '0px';
+
+                        }
+                        timer = setTimeout(autoMove, 1800);
+                        lock = true;
+                        changeIndex(index);
+                    });
+                } else if (direction == 'right->left') {
+                    if (sliderPage.offsetLeft == 0) {
+                        sliderPage.style.left = -num * moveWidth + 'px';
+                        index = num;
+                    }
+                    index--;
+                    startMove(sliderPage, { left: sliderPage.offsetLeft + moveWidth }, function () {
+                        timer = setTimeout(autoMove, 1800);
+                        lock = true;
+                        changeIndex(index);
+                    })
+                }
+
+            }
+            function changeIndex(_index) {
+                for (var i = 0; i < oSpanArray.length; i++) {
+                    oSpanArray[i].className = '';
+                }
+                oSpanArray[_index].className = 'active';
+            }
+            timer = setTimeout(autoMove, 1800);
+
+        }
+    </script>
+</body>
+
+</html>

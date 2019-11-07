@@ -1,0 +1,81 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+html,body{  /*继承html的特点*/
+    width: 100%;
+    height: 100%;
+}
+.wrapper{
+    display: flex;/*弹性盒子*/
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: 100%;
+    background: #000;
+    color: white;
+}
+.content{
+    display: flex;/*弹性盒子*/
+    justify-content: space-between;/* 元素进行水平排列，元素展开 */
+    width:80%;
+    height:80%;
+    /* background:orange; */
+}
+.item{
+    width:16%;
+    height: 100%;
+    border-radius:20px;
+    overflow: hidden;/*超出部分删除*/
+    background: #333;
+} 
+.item .inner{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.item:nth-of-type(1) .bg{
+    background-image:url(../img/1.jpg)    
+}
+.item:nth-of-type(2) .bg{
+    background-image:url(../img/2.jpg)    
+}
+.item:nth-of-type(3) .bg{
+    background-image:url(../img/3.jpg)    
+}
+.item:nth-of-type(4) .bg{
+    background-image:url(../img/4.jpg)    
+}
+.item:nth-of-type(5) .bg{
+    background-image:url(../img/5.jpg)    
+}
+.item:nth-of-type(6) .bg{
+    background-image:url(../img/6.jpg)    
+}
+.item .bg{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.item.inner{
+    width: 100%;
+    height: 100%;
+
+} 
+.init .item .inner{
+    transform: translate3d(0, 100%, 0);
+}
+.item:nth-of-type(2).inner{
+    transition-delay: 0.1s;/*设置延迟*/
+}
+.item:nth-of-type(3).inner{
+    transition-delay: 0.2s;/*设置延迟*/
+}
+.item:nth-of-type(4).inner{
+    transition-delay: 0.3s;/*设置延迟*/
+}
+.item:nth-of-type(5).inner{
+    transition-delay: 0.4s;/*设置延迟*/
+}

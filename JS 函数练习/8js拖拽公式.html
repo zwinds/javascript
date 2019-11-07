@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js数学变换之拖拽公式</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top:0;
+            cursor: pointer;/*鼠标附上显示小手*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        var oBox = document.getElementById('box');
+        var body = document.getElementsByTagName('body')[0];
+        function bindEvent(ele,wrap){
+            var　X,
+            Y,
+            boxL,
+            boxT,
+            disL,
+            disT;
+            var drag = false;
+// -----------------------原理——鼠标落下——移动——停止————
+            ele.onmousedown = function(e){
+                drag = true;
+                var event  = e || window.event;//这里是兼容IE浏览器
+                X = event.clientX;
+                Y = event.clientY;
+                boxL = ele.offsetLeft;
+                boxT = ele.offsetTop;
+                disL = X - boxL;
+                disT = Y -boxT;
+
+           
+            };
+            body.onmousemove = function(e){    
+                 var event = e || window.event;  
+                 if(drag){ 
+                 ele.style.left = event.clientX - disL +'px';
+                 ele.style.top = event.clientY - disT + 'px';
+                 }      
+            };
+            ele.onmouseup = function(){
+               drag = false;//监控是否存在拖拽事件
+            }
+        }
+        bindEvent(oBox,body);
+    </script>
+</body>
+</html>

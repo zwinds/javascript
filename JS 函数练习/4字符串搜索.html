@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id='ip'></input>
+    <script>
+        var personArr = [{name:'王港',src:'../京东项目/京东仿写页面/images/ico.png',des:'颈椎不好'}]
+        var oInp = document.getElementById('ip');
+        oInp.oninput = function() {
+            console.log( filterByText(this.value, personArr));
+        }
+        function filterByText(text, arr) {
+            // arr-> splice //遍历数组
+            var newArr = [];
+            for(var i=0; i < arr.length;i++) {
+            arr[i].name.indexOf(text) !=-1 ? newArr.push(arr[i]) : '';            }
+        }
+        // personArr->[{},{}]
+        return newArr;
+    
+    </script>
+</body>
+</html>

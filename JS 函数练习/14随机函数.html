@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>随机函数的应用化</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    .wrapper{
+        height: 400px;
+        width: 300px;
+        border: 1px solid black;
+        margin: auto;
+        padding: 30px;
+        position: relative;
+    }
+    .redBox{
+        height: 30px;
+        width: 40px;
+        background-color: red;
+        position: absolute;
+    }
+</style>
+<body>
+    <div class="wrapper"></div>
+    <script src="./jquery-3.3.1.js"></script>
+    <script>
+        setInterval(function(){
+            var oDiv = $('<div class="redBox"></div>');
+            var num = parseInt(Math.random()*40) - 20;
+            oDiv.css({
+                'top':-parseInt(Math.random()*80),
+                'left': parseInt(Math.random() * 240),
+                'z-index':10,
+                'transform': 'rotate'(' + num' + deg)'
+            }).appendTo($('.wrapper'))
+        },Math.random()*200+400)
+        // for (var i = 0; i < 20; i++){
+        //        //console.log(Math.random()*100)//0~100之间随机数
+        //       console.log( getMath(20,89))
+        // }
+      function getMath(min,max){
+         return Math.random() * (max - min) + min;
+      }
+       
+    </script>
+</body>
+</html>

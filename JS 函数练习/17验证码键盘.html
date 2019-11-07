@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="txt" type="text">
+    <script>
+        //keydown 键盘按下的时候
+        //keyup 键盘弹起的时候
+        var txt = document.getElementById('txt');
+        txt.onkeydown = function (e) {
+            e = e || window.event;
+            //如果e.keyCode的值在48-57是数字
+            //e.keyCode键盘码
+            //console.log(e.keyCode);
+            //按下后退键 keyCode = 8 ，删除一个字符
+            if ((e.keyCode < 48 || e.keyCode > 57) && e.keyCode !== 8) {
+                //非数字
+                //取消默认行为
+                return false;
+            }
+        }
+
+    </script>
+</body>
+
+</html>

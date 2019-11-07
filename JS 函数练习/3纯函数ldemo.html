@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>避免bug纯函数</title>
+</head>
+<body>
+    <input type="text" id="ip"></input>
+    <script>
+        var num = 18;
+        function compare(x){
+            return x > num;//当num改成18时是纯函数
+        }
+        console.log(compare(20));//判断是不是纯函数就是看是否调用内部函数
+        //对外界是否有影响//功能是否依赖外界
+        var arr = [{name :'duyi'}];
+        function add(_arr){
+            var obj = {name: 'cst'};
+            var newArr = [];
+            for (var i=0;i<_arr.length;i++){
+                newArr[i] = _arr[i];
+            }
+            newArr.push(obj);
+            return  newArr;
+        }
+        var newArr = add(arr);
+        newArr[0].name= 'haha'
+        newArr.push({name: 'haha'});
+
+
+        
+    </script>
+</body>
+</html>

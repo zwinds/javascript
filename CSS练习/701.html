@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件练习</title>
+</head>
+<body>
+    <input type="button" id="btn" value="小哥哥点我">
+        <div id="main">请点击上方按钮</div>
+    <script>
+        var btn = document.getElementById('btn');
+        btn.onclick = function(){
+            alert('别点我，疼');
+        }
+        var div = document.getElementById('main');
+        div.onclick = function(){
+            alert('不可以点的呦！');
+        }
+    </script>
+</body>
+</html>

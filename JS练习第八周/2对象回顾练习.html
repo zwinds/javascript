@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <Script>
+          function createHero(name, blood, weapon) {
+                var o = new Object();
+                o.name = name;
+                o.blood = blood;
+                o.weapon = weapon;
+                o.attack = function () {
+                    console.log(this.weapon + ' 攻击敌人');
+                }
+                return o;
+            }
+            var hero = createHero('刘备', 100, '剑');
+            var hero1 = createHero('关羽', 100, '刀');
+            // console.log(typeof hero);
+            console.log(hero instanceof createHero);
+
+            var arr = [];
+            console.log(arr instanceof Array);
+    </Script>
+</body>
+</html>

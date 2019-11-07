@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>js数组扁平化处理</title>
+</head>
+
+<body>
+    <script>
+        var arr = ['dg', 'cg', 2, 3, [4, 5, 6, [7, 8, 9, [[[[[123]]]], null, {}, [[1, 2, 3, [4]]]]]], null, [], {}, [[1]]]
+        var res = ['dg', 'cg', 2, 3, 4, 5, 6, 7, 8, 9, 123, null, {}, 1, 2, 3, 4, null, {}, 1]
+        // ----------------------下面是复习concat函数-----------------------------------
+        // arr1=[1,2,3]
+        // arr2=[4,5,6]
+
+        // arr1.concat(arr2)//==>[1,2,3,4,5,6]这样两个函数就连接成一个函数
+        // -------------------------------------分割线---------------------------------
+        function isArray(obj){
+            return Object.prototype.toString.call(obj) == '[object Array]'
+        }
+        function flatten(arr) {
+            var arr = arr || [],
+                resArr = [],
+                len = arr.length//这里是降低程序处理arr.length的方法
+            for (var i = 0; i < len; i++) {
+                if (isArray(arr[i])){//判断是不是数组
+                resArr = resArr.concat(flatten(arr[i]))  //数组遍历，参考OneNote笔记
+                } else{
+                    resArr.push (arr[i])
+                }
+            }
+            return resArr
+        }
+
+    </script>
+</body>
+
+</html>

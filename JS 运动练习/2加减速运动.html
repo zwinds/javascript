@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left : 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        oDiv.onclick = function(){
+            startMove(this);
+        }
+        function startMove(obj){
+            clearInterval(obj.timer);
+            var iSpeed = 40;//改成0为加速
+            var a = -3;//改成-3变减速运动
+            obj.timer = setInterval(function () {
+                iSpeed = iSpeed + a;
+                obj.style.left = obj.offsetLeft + iSpeed + 'px';
+            },30);
+        }
+    </script>
+</body>
+</html>

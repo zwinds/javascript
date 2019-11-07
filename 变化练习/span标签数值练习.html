@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+         }
+        .big{
+            height: 40px;
+            width: 400px;
+            background-color: aqua;
+            margin: 0 auto;
+        }
+        .big span{
+            height: 200px;
+            width: 50px;
+            color: red;
+            position: absolute;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="big">
+    <span class="small">0</span>
+    </div>
+    <script>
+                var c = 0;
+                function showLogin() {
+                c++;
+                document.getElementsByClassName('small')[0].innerHTML = c;   
+                console.log('当前分数'+ c);
+                }
+                
+                setInterval("showLogin()", "100");
+
+
+    </script>
+</body>
+</html>

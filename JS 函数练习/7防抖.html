@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>防抖：函数频发触发，只有足够空闲才执行一次（公交车）</title>
+</head>
+<body>
+     <input type="text" id='inp'></input>
+     <script>
+         var oInp = document.getElementById('inp');
+         var timer = null;
+         function ajax(e){
+             console.log(e,this.value);
+         }
+         oInp.oninput = function(e){
+             console.log(arguments);
+             var _self = this;
+             clearTimeout(timer);
+             timer = setTimeout(function(){
+                 ajax.apply(_self,arguments);
+             },1000);
+         };
+     </script>
+</body>
+</html>

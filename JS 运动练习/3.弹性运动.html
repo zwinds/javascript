@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            background: orange;
+            border-radius: 50px;
+        }
+        span{
+           position: absolute;
+           width: 1px; 
+           left: 300px;
+           top: 0px;
+           height: 100px;
+           background: #CCC;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span></span>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        oDiv.onclick = function () {
+            startMove(this);
+        }
+        function startMove(obj) {
+            clearInterval(obj.timer);
+            var iSpeed = 20;//加速度
+            var a , u= 0.8;//初速度
+            obj.timer = setInterval(function(){
+                a = (300 - obj.offsetLeft) / 8;
+                    iSpeed = iSpeed + a;
+                    iSpeed = iSpeed * u;
+                    console.log(iSpeed);
+                    if (Math.abs(iSpeed) ){
+                    }
+                obj.style.left = obj.offsetLeft + iSpeed + 'px';
+            },30);
+        }
+    </script>
+</body>
+
+</html> 

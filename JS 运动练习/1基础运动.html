@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        button{
+            margin-top: 150px;
+        }
+        span{
+            position: absolute;
+            left: 300px;
+            top: 0px;
+            width: 1px;
+            height: 100px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <span></span>
+    <button id="oBtn">run</button>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        var timer = null;
+        oBtn.onclick = function (){
+            startMove(oDiv);
+        }
+        function startMove(obj){//调用的时候可以让标签发生运动
+        clearInterval(timer);
+        // var isSpeed  = 10;
+            var isSpeed = 8;
+            timer = setInterval(function () {
+                // if(obj.offsetLeft === 300){//判断物体是否在300位置     ====
+                if ( 300 - obj.offsetLeft < isSpeed) {
+                clearInterval(timer); 
+                obj.style.left = '300px';
+            }else {
+               obj.style.left = obj.offsetLeft + isSpeed + 'px';
+            }
+        },30)
+    }
+    </script>
+
+</body>
+</html>

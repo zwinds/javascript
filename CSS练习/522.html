@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2019/5/24</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var obj = {
+            name: 123,
+            card: ['visa', 'master'],
+            wife: {
+                name: "bcd",
+                son: {
+                    name: "aaa"
+                }
+            }
+        }
+        var obj1 = {
+            name: obj.name,
+            age: 123,
+            card: [obj1.card[0], obj.card[1]],
+            wife: {
+                name: "bcd"
+            }
+        }
+        //遍历对象 for(var prop in obj)
+        //数组也能for in (数组属于特殊的对象)
+        //1:判断是不是原始值
+        //2:判断是数组还是对象
+        //3:建立相应的数组对象
+        //4:
+        function deepClone(origin, target) {//深度克隆方法
+            var target = target || {}
+            toStr = object.prototype.toString,
+                arrStr = "[object Array]";
+            for (var prop in origin) {
+                if (origin.hasOwnProperty(prop)) {
+                    if (typeof (origin[prop])) == 'object'{
+                       if( toString.call(origin[prop]) == arrStr) {
+                            target[prop] = [];
+                    }else {
+                        target[prop] = [];
+                    }
+                    deepClone(origin[prop],target[prop]);
+                }
+            }else{
+                    target[prop] = origin[prop];
+                }
+            }
+        }
+    </Script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模拟重力运动</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            background: orange;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var oDiv = document.getElementsByTagName('div')[0];
+        oDiv.onclick = function () {
+            startMove(this);
+        }
+        function startMove(obj) {
+            clearInterval(obj.timer);
+            var iSpeedX = 16;//加速度x
+            var iSpeedY = 18;
+            obj.timer = setInterval(function () {
+                var newLeft = obj.offsetLeft + iSpeedX;
+                var newTop = obj.offsetTop + iSpeedY;
+                if (newTop >= document.documentElement.clientHeight - obj.offsetHeight){
+                iSpeedY *= -1;
+                            console.log(iSpeedY);
+                newTop = document.documentElement.clientHeight - obj.offsetHeight;
+            }
+            if (newTop <=0) {
+                iSpeedY *= -1;
+                            console.log(iSpeedY);
+            }
+
+            if(newLeft >= document.documentElement.clientWidth - obj.offsetWidth){
+                iSpeedX *= -1;
+                            console.log(iSpeedX);
+            }
+            if(newLeft <= 0){
+                iSpeedX *= -1;
+                            console.log(iSpeedX);
+            }
+               obj.style.left = newLeft + 'px';
+                            // console.log(obj.style.left);
+               obj.style.top = newTop + 'px';
+                            // console.log(obj.style.top);
+            }, 30);//每隔30ms执行函数一次
+        }
+    </script>
+</body>
+
+</html>
