@@ -90,6 +90,56 @@ button{
     cursor: pointer;
 }
 
+/* 菜单 */
+.header .menu {
+    position: absolute;
+    left: 450px;
+    top:40px;
+}
+.header .menu span{
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-family: "Microsoft Yahei";
+    color: #fff;
+    margin-left: 20px;
+}
+.header .menu2  a{
+    border: none;
+    outline: none;
+    font-size: 15px;
+    font-family: "Microsoft Yahei";
+    color: #fff;
+    margin-left: 20px;
+    /* background: url(../img/a1.png) no-repeat right 2px  center ; */
+
+}
+.header .menu2 {
+    position: absolute;
+    left: 1010px;
+    top:10px;
+}
+/* 菜单结束 */
 
 /* 结束 */
 /*页头结束*/
+.wrapper{
+    width: 100%;
+    height: 58px;
+    background-color: #DDE6D8;
+}
+.wrapper1{
+    width: 70%;
+    height: 58px;
+    margin-left: 160px;
+    
+}
+.wrapper1 span{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    line-height: 52px;
+    font-family: "Microsoft Yahei";
+    color: rgb(78, 78, 78);
+    margin-left: 60px;
+}
