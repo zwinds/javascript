@@ -1,13 +1,34 @@
 @import "reset.css";
 @import "common.css";
 
+/* 首页通用样式 */
+.container{
+    width: 1530px;
+    margin: 0 auto; 
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+/* 公共样式坍塌 */
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+/* 公共样式坍塌结束 */
+
+/* 首页通用样式结束 */
 
 /*页头开始*/
 .header{
     height: 109px;
     width: 100%;
+    background-color: #35A13A;
 }
 .header .container{
-    width: 950px;
-    margin: 0 auto;
+    
 }
+/*页头结束*/
