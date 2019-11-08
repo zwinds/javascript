@@ -48,15 +48,21 @@
 }
 /* 搜索按钮开始 */
 .header .container .search button{
-    background:url(../img/sousuo1.png);
-    /* display: none; */
+    background:url(../img/sousuo1.png)no-repeat left top/70%;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 55px;
+    right: 250px;
+    
+        /* display: none; */
 }
 .header .container .search input{
-    margin: 60px 200px 0px 0px;
+    margin: 50px 200px 0px 0px;
 }
 #serch{        
             right: 50px;
-            top: 20px;
+            top: 0px;
             height: 30px;;
             width: 160px;
             border-radius: 5px;
@@ -74,6 +80,7 @@ input{
     width: 200px;
     height: 30px;
     background-color: rgb(196, 247, 199);
+    position: relative;
 }
 button{
     border: none;
