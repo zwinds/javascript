@@ -1,6 +1,7 @@
 # AJAX
 
 ## 概述
+>ajax : asynchronous javascript and xml 用JavaScript以异步的形式操作xml(现在操作的是Json)
 ### Ajax：一种不用刷新整个页面便可与服务器通讯的办法
 
 
