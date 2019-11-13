@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vue.min.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            width: 80px;
+            margin: 10px;
+        }
+
+        select {
+            width: 100px;
+            margin-top: 10px;
+        }
+
+        #app ul li {
+            list-style: none;
+            font-size: 15px;
+            background-color: #999;
+            color: #fff;
+            float: left;
+            width: 250px;
+            height: 180px;
+            margin: 5px;
+            line-height: 35px;
+        }
+
+        h4 {
+            font-size: 17px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="get">获取</button>
+        <select name="" @change="get">
+            <option v-for="(v,i) in city">{{v}}</option>
+        </select>
+        <ul v-for="(v,i) in msg">
+            <li>
+                <h4>城市：{{info[1][0]}}</h4>
+                <h4>日期：{{v.date}}</h4>
+                白天:<span v-for="(v,i) in msg[i].info.day">
+                    {{v}}
+                </span>
+                <br />
+                夜晚:<span v-for="(v,i) in msg[i].info.night">
+                    {{v}}
+                </span>
+                <br />
+                黄昏:<span v-for="(v,i) in msg[i].info.dawn">
+                    {{v}}
+                </span>
+                <br />
+            </li>
+
+
+
+        </ul>
+    </div>
+    <script>
+        function callback(data) {
+            console.log(data);
+            vm.msg = data.weather;
+            vm.info = data.area;
+            /*for(var i=0;i<vm.msg.length;i++){
+                b++;
+                console.log(b);
+                vm.info=data.weather[b].info;
+                console.log(data.weather[b].info);
+            }*/
+
+
+        }
+        var a = 0;
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+                info: '',
+                city: ['金华','广州', '韶关', '惠州', '上海', '长沙','北京'],
+                list: ['101210901','101280101', '101280201', '101280301', '101020100', '101250101','101010100']
+            },
+            methods: {
+                get: function () {
+                    a = document.getElementsByTagName("select")[0].selectedIndex;
+                    this.$http.jsonp('https://cdn.weather.hao.360.cn/sed_api_weather_info.php', {
+                        params: {
+                            code: this.list[a]
+                        }, jsonp: 'callback'
+                    }).then(function (res) {
+                        console.log(1);
+                    }, function (res) {
+
+                    })
+                }
+            }
+        })
+    </script>
+    <!--编码：广东韶关：101280201；上海：101020100；长沙：101250101；广州：101280101；惠州：101280301-->
+    <!-- https://a.hecdn.net/download/dev/china-city-list.csv //代码查询 -->
+    <!--https://cdn.weather.hao.360.cn/sed_api_weather_info.php?code=101020100&param=pm25&v=1&app=hao360&_jsonp=__jsonp18__[函数名，需自己创建一个名为此的函数]&t=2514133-->
+</body>
+
+</html>
