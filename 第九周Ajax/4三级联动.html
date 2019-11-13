@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        select {
+            width: 85px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="three_level">
+        <label for="">
+            <select name="se_province" id="province">
+            </select>
+        </label>
+        <label for="">
+            <select name="se_city" id="city">
+            </select>
+        </label>
+        <label for="">
+            <select name="se_county" id="county">
+                <option value="">7</option>
+                <option value="">8</option>
+                <option value="">9</option>
+            </select>
+        </label>
+    </div>
+
+    <script>
+        var data = {
+            86: {
+                1000: '黑龙江',
+                2000: '吉林',
+                3000: '辽宁'
+            },
+            1000: {
+                1100: '黑龙江1',
+                1200: '黑龙江2',
+                1300: '黑龙江3'
+            },
+            2000: {
+                2100: '吉林1',
+                2200: '吉林2',
+                2300: '吉林3'
+            },
+            3000: {
+                3100: '辽宁1',
+                3200: '辽宁2',
+                3300: '辽宁3'
+            },
+            1100: {
+                1101: '黑龙江1.1',
+                1102: '黑龙江1.2',
+                1103: '黑龙江1.3'
+            },
+            1200: {
+                1201: '黑龙江2.1',
+                1202: '黑龙江2.2',
+                1203: '黑龙江2.3'
+            },
+            1300: {
+                1301: '黑龙江3.1',
+                1302: '黑龙江3.2',
+                1303: '黑龙江3.3'
+            },
+            2100: {
+                2101: '吉林1.1',
+                2102: '吉林1.2',
+                2103: '吉林1.3'
+            },
+            2200: {
+                2201: '吉林2.1',
+                2202: '吉林2.2',
+                2203: '吉林2.3'
+            },
+            2300: {
+                2301: '吉林3.1',
+                2302: '吉林3.2',
+                2303: '吉林3.3'
+            },
+            3100: {
+                3101: '辽宁1.1',
+                3102: '辽宁1.2',
+                3103: '辽宁1.3'
+            },
+            3200: {
+                3201: '辽宁2.1',
+                3202: '辽宁2.2',
+                3203: '辽宁2.3'
+            },
+            3300: {
+                3301: '辽宁3.1',
+                3302: '辽宁3.2',
+                3303: '辽宁3.3'
+            },
+        }
+        var province = getId('province')
+        var city = getId('city')
+        var county = getId('county')
+        var select_doms = querAll('select[name^=se]')
+        var select_create;
+        var province_value;
+        var city_value;
+        var county_value;
+        // var old_province;
+        // var old_city;
+        // var old_county;
+        // 给省添加各类值
+        var province_create;
+        for (var k in data[86]) {
+            province_create = creEl('option')
+            province_create.value = k
+            province_create.innerHTML = data[86][k]
+            province.appendChild(province_create);
+        }
+        // 动态添加数据
+        province.addEventListener('change', function () {
+            province_value = this.value;
+            // console.log(this.value)
+            // 先删除city节点
+            var old_dom_city = city.querySelectorAll('option');
+            for (var i = 0; i < old_dom_city.length; i++) {
+                if (i !== 0) {
+                    city.removeChild(old_dom_city[i])
+                }
+            }
+            // 删除county节点
+            var old_dom_county = county.querySelectorAll('option');
+            for (var i = 0; i < old_dom_county.length; i++) {
+                if (i !== 0) {
+                    county.removeChild(old_dom_county[i])
+                }
+            }
+            // 给城市添加节点
+            var city_create;
+            for (var l in data[this.value]) {
+                city_create = creEl('option')
+                city_create.value = l
+                city_create.innerHTML = data[this.value][l];
+                city.appendChild(city_create);
+            }
+
+        })
+        city.addEventListener('change', function () {
+            // console.log(this.value)
+            city_value = this.value
+            // console.log(city_value)
+            // 删除所有county的节点
+            var old_dom = county.querySelectorAll('option');
+            for (var i = 0; i < old_dom.length; i++) {
+                if (i !== 0) {
+                    county.removeChild(old_dom[i])
+                }
+            }
+            // 给县添加节点
+            var county_create;
+            // console.log(city_value,data[city_value])
+            for (var l in data[city_value]) {
+                // console.log(l, data[city_value])
+                county_create = creEl('option')
+                county_create.value = l
+                county_create.innerHTML = data[city_value][l];
+                county.appendChild(county_create);
+            }
+        })
+        county.addEventListener('change', function () {
+            county_value = this.value
+            // console.log(county_value);
+            // console.log(data[province_value])
+            // console.log(data[city_value])
+            // console.log(data[city_value][county_value])
+        })
+        // 添加默认值
+        for (var i = 0; i < select_doms.length; i++) {
+            select_create = creEl('option');
+            select_create.innerHTML = '--请选择--';
+            select_create.selected = true;
+            select_doms[i].insertBefore(select_create, select_doms[i].childNodes[0])
+        }
+
+        // 添加数据方法
+        function addData(dom, data) {
+        }
+        // 提交方法
+        function creEl(tag) {
+            return document.createElement(tag)
+        }
+        function getId(id) {
+            return document.getElementById(id)
+        }
+        function querAll(val) {
+            return document.querySelectorAll(val)
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+    <title>Title</title>
+    <style>
+        table {
+            margin-top: 20px;
+            width: 500px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+
+        td {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="text" id="city">
+    <input type="button" value="查询" id="btn">
+
+    <table id="showTable">
+
+    </table>
+    <script src="../template-web.js"></script>
+    <script src="../jquery-1.12.4.js"></script>
+    <script type="text/html" id="tpl">
+<tr>
+  <td>城市</td>
+  <td>{{ result.city }}</td>
+</tr>
+<tr>
+  <td>日期</td>
+  <td>{{ result.date }}</td>
+</tr>
+<tr>
+  <td>天气</td>
+  <td>{{ result.weather }}</td>
+</tr>
+<tr>
+  <td>气温</td>
+  <td>{{ result.temp }}度</td>
+</tr>
+<tr>
+  <td>最高气温</td>
+  <td>{{ result.temphigh }}</td>
+</tr>
+<tr>
+  <td>最低气温</td>
+  <td>{{ result.templow }}</td>
+</tr>
+<tr>
+  <td>更新时间</td>
+  <td>{{ result.updatetime }}</td>
+</tr>
+</script>
+
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    type: "get",
+                    url: "http://api.jisuapi.com/weather/query",
+                    data: {
+                        appkey: "3fa977031a30ffe1",
+                        city: $('#city').val(),
+                    },
+                    dataType: "jsonp",
+                    success: function (info) {
+                        console.log(info)
+                        var htmlStr = template("tpl", info);
+                        $("#showTable").html(htmlStr);
+                    }
+                });
+            });
+
+        })
+    </script>
+</body>
+
+</html>
