@@ -16,6 +16,7 @@ html, body, .section {
 /* 第一屏幕制作 start */
 .section1 {
 	background: #fadd67 url(../images/t1fpyqfltdxxaiulhh-990-600.png) no-repeat center bottom;
+	/* 图片向下居中 center bottom */
 }
 .fly {
 	position: absolute;
@@ -261,6 +262,7 @@ html, body, .section {
 /* 第6屏幕制作 start */
 .section6 {
 	background: #84d9ed url(../images/t1dvj.fn0gxxb0_fua-2500-600.png) no-repeat 25% 100%;
+	/* 图片居中采用部分居中，为了后面可以制作更多可以动的效果 */
 }
 .box-06 {
 	position: absolute;
