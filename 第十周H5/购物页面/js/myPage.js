@@ -1,9 +1,3 @@
-/*
-* @Author: apple
-* @Date:   2017-09-17 18:16:20
-* @Last Modified by:   apple
-* @Last Modified time: 2017-09-25 21:41:03
-*/
 $(function(){
 	var k = $(window).height(); // 当前屏幕的高度
 	var flag = false;  // 控制动画
