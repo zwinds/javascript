@@ -20,14 +20,26 @@
     3.动画
     4.codepen.io(html5动效) 可以从这里找到一些实际开发的模板 -->
     <!-- IE9之前的浏览器不支持canvas -->
+    <!-- 逐行运行，所以就需要把填充和描边写到样式的后面 -->
     <script>
         var oCanvas1 = document.getElementById('canvas1');//获得canvas元素
         var ctx = oCanvas1.getContext('2d');//获得canvas上下文对象，3d是WebGL     
         ctx.moveTo(100,100);//ctx.moveTo(x,y)移动到x,y坐标点
         ctx.lineTo(200,100);//从当前点绘制直线到x,y
         ctx.lineTo(200,200);
+        ctx.strokeStyle = 'red';
+        ctx.lineWidth = 40;//设置线宽
+        ctx.fillStyle = 'green';
         ctx.stroke();//描边
         ctx.fill();//填充，把起始点与结束点连接到一起
+        // ctx.closePath();//闭合当前路径和回到起始点的区别
+        ctx.moveTo(300,100);
+        ctx.lineTo(400,100);
+        ctx.lineTo(400,200);
+        ctx.closePath();
+        ctx.strokeStyle = '';
+        ctx.lineWidth = 40;
+        ctx.stroke();
     </script>
 </body>
 </html>
