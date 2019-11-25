@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas1{
+            border:1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas1" width=500 height=500></canvas>
+    <!-- /*添加canvas标签*/ -->
+    <!-- canavs的应用场景
+    1.游戏
+    2.图标
+    3.动画
+    4.codepen.io(html5动效) 可以从这里找到一些实际开发的模板 -->
+    <!-- IE9之前的浏览器不支持canvas -->
+    <script>
+        var oCanvas1 = document.getElementById('canvas1');//获得canvas元素
+        var ctx = oCanvas1.getContext('2d');//获得canvas上下文对象，3d是WebGL     
+        ctx.moveTo(100,100);//ctx.moveTo(x,y)移动到x,y坐标点
+        ctx.lineTo(200,100);//从当前点绘制直线到x,y
+        ctx.lineTo(200,200);
+        ctx.stroke();//描边
+        ctx.fill();//填充，把起始点与结束点连接到一起
+    </script>
+</body>
+</html>
