@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width=500 height=500></canvas>
+    <!-- /*添加canvas标签*/ -->
+    <!-- canavs的应用场景
+    1.游戏
+    2.图标
+    3.动画
+    4.codepen.io(html5动效) 可以从这里找到一些实际开发的模板 -->
+    <!-- IE9之前的浏览器不支持canvas -->
+    <!-- 逐行运行，所以就需要把填充和描边写到样式的后面 -->
+    <script>
+        var oCanvas1 = document.getElementById('canvas1');//获得canvas元素
+        var ctx = oCanvas1.getContext('2d');//获得canvas上下文对象，3d是WebGL     
+        var w = oCanvas1.width;
+        var h = oCanvas1.height;
+        //arc(x,y,r,起始弧度，结束弧度，弧形的方向)
+        // 角以弧度计，0顺时针1逆时针
+        ctx.arc(250,250,100,0,Math.PI/2);
+        ctx.stroke();
+
+    </script>
+</body>
+
+</html>
