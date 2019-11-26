@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #canvas1 {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="canvas1" width=500 height=500></canvas>
+    <!-- /*添加canvas标签*/ -->
+    <!-- canavs的应用场景
+    1.游戏
+    2.图标
+    3.动画
+    4.codepen.io(html5动效) 可以从这里找到一些实际开发的模板 -->
+    <!-- IE9之前的浏览器不支持canvas -->
+    <!-- 逐行运行，所以就需要把填充和描边写到样式的后面 -->
+    <script>
+        var oCanvas1 = document.getElementById('canvas1');//获得canvas元素
+        var ctx = oCanvas1.getContext('2d');//获得canvas上下文对象，3d是WebGL     
+        var w = oCanvas1.width;
+        var h = oCanvas1.height;
+        //贝塞尔曲线是什么?
+        //贝塞尔曲线于1962由法国工程师皮埃尔·贝塞尔（Pierre Bézier）所广泛发表，他运用贝塞尔曲线来为汽车的主体进行设计
+        // 现在贝塞尔曲线在计算机图形学领域也是一个相当重要的参数曲线，很多画图工具软件都包含贝塞尔曲线的工具对象
+        //一阶贝塞尔曲线
+        // 给定点两个点，一阶贝塞尔曲线只是一条两点之间的直线。
+        //二阶贝塞尔曲线
+        //ctx.quadraticCurveTo( p1x, p1y, p2x, p2y )
+        //三阶贝塞尔曲线
+        // ctx.bezierCurveTo(p1x, p1y, p2x, p2y, p3x, p3y)
+        // 为了动画更加平滑，我们使用requestAnimationFrame来代替定时器
+        //quadraticCurveTo(x1,y1,ex,ey)二次贝塞尔曲线
+        // x1,y1控制点
+        //ex,ey结束点
+        //bezierCurveTo(x1,y1,x2,y2,ex,ey)三次贝塞尔曲线
+         // x1,y1，x2,y2控制点
+        //ex,ey结束点
+        // -------------------三次绘制
+        ctx.moveTo(100,250);
+        ctx.bezierCurveTo(150, 100, 400, 100,500,0);
+        ctx.stroke();
+
+
+    </script>
+</body>
+
+</html>
