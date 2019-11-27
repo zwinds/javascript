@@ -14,14 +14,26 @@
             left: 50%;
             margin-top: -250px;
             margin-left: -250px;
-            border-radius: 50%;
+            border-radius: 25%;
             perspective: 1000px; /*  透视 */
-            z-index: -1;
+            transform: rotateX(60deg);
+        }
+        .zuo{
+            position: absolute;
+            width: 600px;
+            height: 80px;
+            background-color: black;
+            top: 62%;
+            left: 460px;
+            perspective: 1000px; /*  透视 */
+            transform: rotateX(60deg);
+            
         }
     </style>
 </head>
 
 <body>
+    <div class="zuo"></div>
     <canvas id="myCanvas" width="500" height="500"></canvas>
     <script>
         // < !--获取Canvas元素 -->
