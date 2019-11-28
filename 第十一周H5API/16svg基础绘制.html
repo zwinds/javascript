@@ -12,12 +12,26 @@
                 line{
                     stroke: red;
                 }
+                rect{
+                    fill:transparent;
+                    stroke: aqua;
+                }
     </style>
 
 </head>
 <body>
     <svg width=500 height=500>
+        <!-- 绘制直线 -->
         <line x1=100 y1=100 x2=200 y2=100></line>
-    </svg>
+        <!-- 绘制矩形 -->
+        <rect x="50" y="50" width="50" height="50" rx="10" ry="20"></rect>
+        <!-- <rect>的x属性和y属性，指定了矩形左上角端点的横坐标和纵坐标；width属性和height属性指定了矩形的宽度和高度（单位像素） -->
+        <!-- 绘制圆形 -->
+        <circle r="50" cx="220" cy="100"></circle>
+        <!-- <circle>标签的cx、cy、r属性分别为横坐标、纵坐标和半径，单位为像素。坐标都是相对于<svg>画布的左上角原点 -->
+        <!-- 绘制椭圆 -->
+        <!-- <ellipse>的cx属性和cy属性，指定了椭圆中心的横坐标和纵坐标（单位像素）；rx属性和ry属性，指定了椭圆横向轴和纵向轴的半径（单位像素）。 -->
+
+        </svg>
 </body>
 </html>
